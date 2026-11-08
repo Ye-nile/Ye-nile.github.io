@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jinyuan Ye (叶锦缘) — Theoretical Condensed-Matter Physics</title>
+<meta name="description" content="Jinyuan Ye (叶锦缘), Ph.D. candidate in theoretical physics at Fudan University (joint programme with Westlake University). Kinetic magnetism, ferromagnetic insulators, tensor-network and variational Monte Carlo methods.">
+<meta name="author" content="Jinyuan Ye">
+<meta name="theme-color" content="#fcfbf8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1113" media="(prefers-color-scheme: dark)">
+
+<!-- Social preview. TODO: replace with an absolute URL once the site has a domain,
+     e.g. https://<username>.github.io/assets/img/avatar.jpg -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Jinyuan Ye (叶锦缘)">
+<meta property="og:description" content="Theoretical condensed-matter physics · kinetic magnetism · tensor networks">
+<meta property="og:image" content="assets/img/avatar.jpg">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script>
+  // Resolve the colour scheme before first paint to avoid a flash of the wrong theme.
+  (function () {
+    var root = document.documentElement;
+    root.classList.add('js');
+    try {
+      var stored = localStorage.getItem('theme');
+      if (stored === 'light' || stored === 'dark') root.setAttribute('data-theme', stored);
+    } catch (e) {}
+  })();
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-cn">叶锦缘</span>
+      <span class="brand-en">Jinyuan Ye</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Section navigation">
+      <a href="#about">About</a>
+      <a href="#focus">Focus</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#news">News</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#service">Service</a>
+      <a href="#honors">Honors</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.6M12 18.8v2.6M2.6 12h2.6M18.8 12h2.6M5.4 5.4l1.9 1.9M16.7 16.7l1.9 1.9M18.6 5.4l-1.9 1.9M7.3 16.7l-1.9 1.9"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero wrap" id="top">
+    <div class="hero-text">
+      <p class="eyebrow">Theoretical Condensed-Matter Physics</p>
+
+      <h1>
+        Jinyuan Ye <span class="h1-cn">叶锦缘</span>
+      </h1>
+
+      <p class="lede">
+        I work on theoretical condensed-matter physics: strongly correlated electrons, where
+        kinetic energy and Coulomb repulsion are of comparable size and the textbook pictures
+        stop working. My question is whether magnetism can come from motion alone — the answer
+        so far is a ferromagnetic insulator, published in
+        <em>Physical Review Letters</em>.
+      </p>
+
+      <p class="lede lede-zh" lang="zh">
+        我做理论凝聚态物理，研究强关联电子体系——在这里，动能与库仑排斥量级相当，教科书式的
+        图像会失效。我的问题是：磁性能否只由电子的运动产生？目前给出的答案，是 PRL 上那个
+        铁磁绝缘体。
+      </p>
+
+      <p class="affiliation">
+        Ph.D. candidate in Physics,
+        <a href="https://www.fudan.edu.cn/" rel="noopener">Fudan University</a>
+        <span class="sep">·</span> joint programme with
+        <a href="https://www.westlake.edu.cn/" rel="noopener">Westlake University</a>, Hangzhou
+      </p>
+      <p class="affiliation-zh" lang="zh">复旦大学物理学博士研究生 · 与西湖大学联合培养 · 现居杭州</p>
+
+      <ul class="link-row">
+        <li><a class="pill pill-primary" href="mailto:yejinyuan@westlake.edu.cn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="5" width="18.4" height="14" rx="2.2"/><path d="M3.4 6.4 12 12.6l8.6-6.2"/></svg>
+          Email</a></li>
+
+        <li><a class="pill" href="https://doi.org/10.1103/mg2p-3f4k" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 2.9H6.8a2 2 0 0 0-2 2v14.2a2 2 0 0 0 2 2h10.4a2 2 0 0 0 2-2V8.5z"/><path d="M13.4 2.9v5.6h5.8M8.5 13h7M8.5 16.6h4.6"/></svg>
+          Read the PRL paper</a></li>
+      </ul>
+    </div>
+
+    <figure class="hero-portrait">
+      <img src="assets/img/avatar.jpg" width="520" height="520"
+           alt="Portrait of Jinyuan Ye (叶锦缘)">
+      <figcaption>
+        <span class="dot" aria-hidden="true"></span>
+        Ph.D. candidate, 2022&ndash;2027
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ============================== HIGHLIGHTS ============================== -->
+  <section class="wrap highlights" aria-label="At a glance">
+    <div class="stat">
+      <span class="stat-value">1</span>
+      <span class="stat-label">first-author paper in <em>Physical Review Letters</em></span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">&chi; = 9600</span>
+      <span class="stat-label">largest DMRG bond dimension reached</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">4</span>
+      <span class="stat-label">conference talks and posters</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">3</span>
+      <span class="stat-label">semesters as a physics teaching assistant</span>
+    </div>
+  </section>
+
+  <!-- ============================== ABOUT ============================== -->
+  <section class="wrap section" id="about">
+    <div class="section-head">
+      <h2>About</h2>
+      <p class="section-sub" lang="zh">关于我</p>
+    </div>
+
+    <div class="prose">
+      <p>
+        I am a Ph.D. candidate in theoretical physics at
+        <a href="https://www.fudan.edu.cn/" rel="noopener">Fudan University</a>, in a joint
+        programme with <a href="https://www.westlake.edu.cn/" rel="noopener">Westlake
+        University</a>, working with Prof. Congjun Wu. I expect to graduate in June 2027.
+        My field is strongly correlated electron systems — the regime where kinetic energy
+        and Coulomb repulsion are of comparable size, and neither the band picture nor a
+        textbook ordered state is a good description.
+      </p>
+      <p class="zh" lang="zh">
+        我是复旦大学理论物理方向的博士研究生，与西湖大学联合培养，师从吴从军教授，预计 2027 年
+        6 月毕业。研究对象是强关联电子体系：在这个区间里，动能与库仑排斥量级相当，能带图像和
+        教科书式的有序态都不再是好描述。
+      </p>
+
+      <p>
+        I came to physics out of curiosity about how the world works, and stayed because I
+        like thinking — and because I wanted to find out how far that gets me. Choosing
+        theoretical physics for the Ph.D. was not a difficult decision: if the aim is to
+        understand the rules underneath a phenomenon, the theory side is where the rules get
+        written down.
+      </p>
+      <p class="zh" lang="zh">
+        我学物理，是出于对世界如何运转的好奇，也因为喜欢思考、想探一探自己智力的边界。
+        保研时选择理论物理几乎没有犹豫：如果目标是理解现象背后的规律，那规律是在理论这一侧
+        写下来的。
+      </p>
+
+      <p>
+        The question has a classic answer: Nagaoka showed that a single hole can polarise a
+        half-filled band. But the theorem demands exactly one hole and
+        <span class="nowrap">U → ∞</span>, and real materials satisfy neither condition. So
+        we asked a narrower question — what is the smallest model that still produces
+        ferromagnetic coupling, and how far can its conditions be relaxed? The trimer is that
+        model. What we did not expect is that at 1/3 filling it is also a
+        <em>ferromagnetic insulator</em>, with a direct competition between ferromagnetic and
+        antiferromagnetic order. That combination is rare: an insulator in practice is almost
+        always antiferromagnetic.
+      </p>
+      <p class="zh" lang="zh">
+        这个问题有一个经典答案：Nagaoka 定理证明，半满能带中恰好一个空穴可以把整个体系极化。
+        但定理要求恰好一个空穴、且 <span class="nowrap">U → ∞</span>，现实材料几乎不同时满足。
+        于是我们退一步问：能产生铁磁耦合的最小模型是什么，它的适用条件能放宽到什么程度？
+        三聚体就是这个最小模型。没有预料到的是，它在 1/3 填充时同时是一个<em>铁磁绝缘体</em>，
+        体系里存在铁磁与反铁磁的直接竞争。这种组合很少见——现实中的绝缘体几乎总是反铁磁的。
+      </p>
+
+      <p>
+        Our <em>Physical Review Letters</em> paper answers that question for a Hubbard model
+        on a trimerized triangular lattice at 1/3 filling: a ferromagnetic insulator in which
+        the magnetisation is driven by motion alone, without exchange or Hund's coupling. Each
+        trimer becomes a spin-1 moment,
+        and the inter-trimer hopping generates two competing superexchanges: one that never
+        forms a double occupancy and scales with the intra-trimer hopping <em>t</em>
+        (ferromagnetic), and one that costs <em>U</em> (antiferromagnetic). As
+        <em>U</em> → ∞ only the ferromagnetic channel survives; as the interaction weakens,
+        antiferromagnetic order takes over around <em>U/t</em> ≈ 13–15.
+      </p>
+      <p class="zh" lang="zh">
+        我们发表在 <em>Physical Review Letters</em> 的工作，在 1/3 填充的三聚体化三角晶格
+        Hubbard 模型上回答了这个问题：磁化完全由电子的运动驱动，不需要交换作用，也不需要洪特耦合。
+        每个三聚体成为一个自旋 1 局域矩，三聚体之间的跃迁产生两种
+        相互竞争的交换通道：一种不形成双占据、能量尺度由三聚体内部跃迁 <em>t</em> 决定（铁磁），
+        另一种需付出 <em>U</em>（反铁磁）。<em>U</em> → ∞ 时只剩铁磁通道；相互作用减弱后，
+        反铁磁序在 <em>U/t</em> ≈ 13–15 附近占据主导。
+      </p>
+
+      <p>
+        What I actually enjoy is the moment a vague phenomenon starts to behave like a
+        model. The first version is always crude — it keeps only the factors that matter
+        most, and strictly speaking it is not true. Getting it to work is half the job; the
+        interesting half is putting back what you left out, because that is usually where
+        the next piece of physics is hiding. In the published work, the infinite-interaction
+        limit gave a clean ferromagnetic insulator; restoring a finite <em>U</em> exposed the
+        competition between ferromagnetic and antiferromagnetic order that the clean limit
+        cannot see. In the loop-current problem we deliberately started from a truncated set
+        of hopping terms, skipping a nearer range that is only negligible when a symmetry
+        forbids it. Putting it back shifted the numbers without touching the mechanism. Both
+        outcomes were informative: one added a phase, the other removed a worry.
+      </p>
+      <p class="zh" lang="zh">
+        我真正享受的，是一个模糊的物理现象开始像模型一样运转的那个时刻。最初的版本总是粗糙的
+        ——只保留最重要的几个因素，严格说来并不符合事实。让它跑通只是一半，有意思的是另一半：
+        把省掉的东西加回去，因为下一块物理通常就藏在那里。在已发表的工作里，无限大相互作用
+        极限先给出了一个干净的铁磁绝缘体；把有限的 <em>U</em> 加回来后，才暴露出干净极限看不见的
+        铁磁—反铁磁竞争。环流序的问题上，我们刻意从一个截断的跃迁集合出发，跳过了更近的一档——
+        只有在对称性明确禁止时，这一档才可以忽略。把后续项补回去之后，结果只是数值上移动，机制
+        并没有改变。两种结果都有信息量：一个多出了一个相，另一个去掉了一层担心。
+      </p>
+
+      <p>
+        A claim of that kind only stands if the numbers stand. During review I took over an
+        existing tensor-network code base, ran DMRG on <span class="nowrap">6 × 4 × 3</span>
+        clusters up to bond dimension <span class="nowrap">&chi; = 9600</span>, and analysed
+        spin and charge correlation functions. When a referee questioned the metallic state,
+        I designed the alternative analysis, introduced finite-entanglement scaling, and
+        traced how the correlation length depends on the bond dimension — evidence for the
+        metal, and a clear statement of where the phase boundary stops being trustworthy.
+      </p>
+      <p class="zh" lang="zh">
+        这类结论只有在数值站得住时才立得住。审稿阶段我接手一套既有的张量网络程序，在
+        <span class="nowrap">6 × 4 × 3</span> 体系上完成键维数至 <span class="nowrap">&chi;
+        = 9600</span> 的 DMRG 计算，分析自旋与电荷关联函数。当金属态是否存在受到质疑时，
+        我设计了替代分析方案，引入有限纠缠标度，考察关联长度随键维数的变化——既为金属态提供证据，
+        也明确相边界估计在何处不再可信。
+      </p>
+
+      <p>
+        Since then I have spent more time designing methods than using them: a Gutzwiller
+        variational Monte Carlo scheme in Julia, built module by module with AI assistance
+        and reviewed line by line; and a DMRG study of loop-current order on the Kagome
+        lattice. I care about the craft around the physics as much as the physics itself —
+        code that can be read, interfaces that are tested, derivations that survive being
+        written down.
+      </p>
+      <p class="zh" lang="zh">
+        最近我更常做的是设计方法而不是只用方法：用 Julia 逐模块搭建、逐行审查的 Gutzwiller
+        变分蒙特卡洛方案，以及 Kagome 晶格上环流序的 DMRG 研究。物理之外的手艺我也同样计较：
+        代码要读得懂，接口要测过，推导要经得起写下来。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== FOCUS ============================== -->
+  <section class="wrap section" id="focus">
+    <div class="section-head">
+      <h2>What I bring</h2>
+      <p class="section-sub" lang="zh">能力与证据</p>
+    </div>
+
+    <ol class="cap-list">
+      <li class="cap">
+        <span class="cap-num">01</span>
+        <div class="cap-body">
+          <h3>Model building <span class="cap-zh" lang="zh">建模</span></h3>
+          <p>
+            From a Hamiltonian and a symmetry argument to a mechanism that can be stated in
+            one sentence — and then checked. A first model is allowed to be wrong; it is not
+            allowed to be wrong about the thing that matters.
+          </p>
+          <p class="zh" lang="zh">
+            从一个哈密顿量和一条对称性论证出发，走到能用一句话讲清的机制，并且让它可被检验。
+            第一个模型可以错，但不能把要紧的东西搞错。
+          </p>
+          <p class="cap-evidence">
+            <span class="ev-label">Evidence</span>
+            <a href="#publications"><em>Phys. Rev. Lett.</em> 136, 086504 (2026)</a>
+            — trimer → spin-1 moment → spin-1 Heisenberg mapping
+          </p>
+        </div>
+      </li>
+
+      <li class="cap">
+        <span class="cap-num">02</span>
+        <div class="cap-body">
+          <h3>Human–AI collaborative implementation <span class="cap-zh" lang="zh">人机协作的实现</span></h3>
+          <p>
+            Split a calculation into modules and interfaces, direct a model to write the
+            code, then review every line and test it against limits where the answer is known.
+          </p>
+          <p class="zh" lang="zh">
+            把计算拆成模块与接口，让模型写代码，再逐行审查，并用已知答案的极限情形验证。
+          </p>
+          <p class="cap-evidence">
+            <span class="ev-label">Evidence</span>
+            <a href="#research">Gutzwiller VMC prototype in Julia</a>
+            — lattice and band structure, Slater determinants, Metropolis sampling,
+            rank-one determinant updates
+          </p>
+        </div>
+      </li>
+
+      <li class="cap">
+        <span class="cap-num">03</span>
+        <div class="cap-body">
+          <h3>Teaching &amp; programme organisation <span class="cap-zh" lang="zh">教学与组织</span></h3>
+          <p>
+            Explain hard things to people who do not yet have the vocabulary, and run
+            programmes that depend on other people deciding to show up.
+          </p>
+          <p class="zh" lang="zh">
+            把难的东西讲给还没有那套词汇的人听；把需要别人也愿意来的活动真正办成。
+          </p>
+          <p class="cap-evidence">
+            <span class="ev-label">Evidence</span>
+            <a href="#teaching">three semesters of course support</a>, a training deck written
+            for the next cohort of TAs, and <a href="#service">two years leading the
+            water-sports club</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="cap">
+        <span class="cap-num">04</span>
+        <div class="cap-body">
+          <h3>Large-scale numerics <span class="cap-zh" lang="zh">大规模数值计算</span></h3>
+          <p>
+            Run the calculation that settles the argument, and stay honest about which
+            conclusions the bond dimension can actually support.
+          </p>
+          <p class="zh" lang="zh">
+            把决定争论的那次计算真正跑出来，并清楚键维数究竟能支撑到哪一步结论。
+          </p>
+          <p class="cap-evidence">
+            <span class="ev-label">Evidence</span>
+            DMRG to <span class="nowrap">&chi; = 9600</span> with finite-entanglement scaling;
+            Linux/HPC batch workflows
+          </p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============================== RESEARCH ============================== -->
+  <section class="wrap section" id="research">
+    <div class="section-head">
+      <h2>Research</h2>
+      <p class="section-sub" lang="zh">研究方向</p>
+    </div>
+
+    <p class="section-lead">
+      Ferromagnets are supposed to need exchange. In a model we built, motion alone is
+      enough — and what comes out is an insulator.
+      <span lang="zh">铁磁体按理需要交换作用。在我们搭的模型里，光靠电子的运动就够了——
+      而且得到的还是一个绝缘体。</span>
+    </p>
+
+    <div class="card-grid">
+      <article class="card">
+        <h3>Kinetic magnetism &amp; ferromagnetic insulators</h3>
+        <p class="card-zh" lang="zh">动能驱动磁性</p>
+        <p>
+          Ferromagnetism that comes from the kinetic energy of electrons rather than from
+          exchange. Minimal models on frustrated lattices, the infinite-interaction limit,
+          and how the mechanism survives at finite <span class="nowrap">U</span>.
+        </p>
+        <p class="card-zh-body" lang="zh">
+          铁磁序由电子的动能而非交换作用驱动：阻挫晶格上的最小模型、无限大相互作用极限，
+          以及这一机制在有限 <span class="nowrap">U</span> 下的存活条件。
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Method design: Gutzwiller Monte Carlo</h3>
+        <p class="card-zh" lang="zh">方法设计：变分蒙特卡洛</p>
+        <p>
+          Gutzwiller variational wave functions with Monte Carlo sampling, aimed at
+          single-particle excitation energies and their extrapolation — a quantitative route
+          into the metal–insulator question.
+        </p>
+        <p class="card-zh-body" lang="zh">
+          以 Gutzwiller 变分波函数配合蒙特卡洛抽样，目标量是单电子激发能及其外推，
+          为金属—绝缘体判据提供定量依据。
+        </p>
+        <p class="card-link">
+          <a href="notes/vmc.html">Method note: how the algorithm works →</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Tensor-network methods</h3>
+        <p class="card-zh" lang="zh">张量网络数值方法</p>
+        <p>
+          DMRG and iMPS for frustrated two-dimensional systems: correlation functions and
+          correlation lengths, and finite-entanglement scaling as a way to decide how far a
+          numerical conclusion reaches.
+        </p>
+        <p class="card-zh-body" lang="zh">
+          用 DMRG / iMPS 研究阻挫二维体系，计算关联函数与关联长度；以有限纠缠标度判断
+          一个数值结论究竟能推到多远。
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Loop-current order</h3>
+        <p class="card-zh" lang="zh">环流序的形成机制</p>
+        <p>
+          Ordered electron currents on the Kagome lattice. What role kinetic energy plays in
+          stabilising the order, and which correlation functions would falsify the proposed
+          mechanism.
+        </p>
+        <p class="card-zh-body" lang="zh">
+          Kagome 晶格上的有序环流：动能在这类序的形成中起什么作用，以及哪些关联函数
+          足以否证所提出的机制。
+        </p>
+      </article>
+    </div>
+
+    <p class="footnote">
+      Both threads are still running: the metal–insulator question at finite doping, and
+      loop-current order on the Kagome lattice.
+      <span lang="zh">两条线都在进行中：有限掺杂下的金属—绝缘体问题，以及 Kagome 晶格上的环流序。</span>
+    </p>
+  </section>
+
+  <!-- ============================== PUBLICATIONS ============================== -->
+  <section class="wrap section" id="publications">
+    <div class="section-head">
+      <h2>Publications</h2>
+      <p class="section-sub" lang="zh">论文</p>
+    </div>
+
+    <article class="pub">
+      <div class="pub-meta">
+        <span class="pub-venue">Physical Review Letters</span>
+        <span class="pub-detail">136, 086504 (2026)</span>
+        <span class="pub-tag">First author</span>
+        <span class="pub-tag pub-tag-quiet">Open access</span>
+      </div>
+
+      <div class="pub-body">
+        <h3>
+          <a href="https://doi.org/10.1103/mg2p-3f4k" rel="noopener">
+            Kinetic Energy Driven Ferromagnetic Insulator
+          </a>
+        </h3>
+        <p class="pub-title-zh" lang="zh">动能驱动的铁磁绝缘体</p>
+
+        <p class="pub-authors">
+          <strong>Jinyuan Ye</strong>, Yuchi He, Congjun Wu
+        </p>
+
+        <p class="pub-abstract">
+          A minimal model of interacting fermions with a ferromagnetic insulating phase: the
+          Hubbard model on a trimerized triangular lattice. At 1/3 filling each trimer forms
+          a triplet spin-1 moment, and the inter-trimer superexchange is ferromagnetic,
+          <span class="nowrap">J = (2/27)·t′²/t</span>, as <span class="nowrap">U/t → ∞</span>.
+          At finite interaction the antiferromagnetic superexchange competes and the system
+          enters a frustrated antiferromagnetic insulator around
+          <span class="nowrap">U/t ≈ 13–15</span>, as confirmed by DMRG. The ferromagnetic
+          state survives a weak staggered flux and becomes a ferromagnetic metal on light
+          doping; the same analysis on the trimerized Kagome lattice yields only
+          antiferromagnetic superexchange.
+        </p>
+        <p class="pub-abstract-zh" lang="zh">
+          三聚体化三角晶格上的 Hubbard 模型：1/3 填充时每个三聚体成为自旋 1 三重态，
+          三聚体间交换在 <span class="nowrap">U/t → ∞</span> 时呈铁磁；有限相互作用下
+          反铁磁通道与之竞争，在 <span class="nowrap">U/t ≈ 13–15</span> 附近进入阻挫反铁磁
+          绝缘体（经 DMRG 确认）。铁磁态在弱交错磁通下保持稳定，轻掺杂后转变为铁磁金属；
+          对三聚体化 Kagome 晶格作同样分析则只得到反铁磁交换。
+        </p>
+
+        <ul class="pub-links">
+          <li><a href="https://doi.org/10.1103/mg2p-3f4k" rel="noopener">Paper (DOI)</a></li>
+          <li><a href="assets/files/mg2p-3f4k.pdf">PDF</a></li>
+          <li><a href="#talks">Presentations on this work</a></li>
+        </ul>
+      </div>
+    </article>
+
+    <h3 class="subhead">Work in progress <span lang="zh">进行中</span></h3>
+
+    <ul class="worklist">
+      <li>
+        <span class="worklist-title">Gutzwiller variational Monte Carlo for single-particle
+        excitations in kinetic ferromagnets</span>
+        <span class="worklist-note">Method developed and prototyped in Julia; convergence
+        checks and excitation-energy extrapolation ongoing.</span>
+        <span class="worklist-note" lang="zh">方法已用 Julia 实现原型；收敛性检验与激发能外推
+        仍在进行。</span>
+      </li>
+      <li>
+        <span class="worklist-title">Kinetic origin of loop-current order on the Kagome
+        lattice</span>
+        <span class="worklist-note">Model building and DMRG correlation-function tests
+        ongoing.</span>
+        <span class="worklist-note" lang="zh">模型搭建与 DMRG 关联函数检验进行中。</span>
+      </li>
+    </ul>
+
+    <p class="footnote">
+      Ongoing work is listed without a venue because it is not yet published — please do not
+      cite it. <span lang="zh">进行中的工作尚未发表，请勿引用。</span>
+    </p>
+
+    <h3 class="subhead" id="talks">Presentations <span lang="zh">学术交流</span></h3>
+
+    <ul class="talklist">
+      <li>
+        <div class="talk-main">
+          <span class="talk-kind">Talk</span>
+          <a class="talk-title" href="assets/files/talk-eit-2026.pdf">Kinetic Energy Driven Ferromagnetic Insulator</a>
+          <p class="talk-venue">3rd Doctoral Forum, Eastern Institute of Technology, Ningbo
+          <span class="muted" lang="zh">· 第三届宁波东方理工大学博士生论坛</span></p>
+        </div>
+        <time class="talk-date" datetime="2026-10">Oct 2026</time>
+      </li>
+      <li>
+        <div class="talk-main">
+          <span class="talk-kind">Oral</span>
+          <a class="talk-title" href="assets/files/talk-magnetism-2026.pdf">Kinetic Energy Driven Ferromagnetic Insulator</a>
+          <p class="talk-venue">20th National Conference on Magnetism Theory, Hangzhou
+          <span class="muted" lang="zh">· 第 20 届全国磁学理论会议（杭州）</span></p>
+        </div>
+        <time class="talk-date" datetime="2026-05">May 2026</time>
+      </li>
+      <li>
+        <div class="talk-main">
+          <span class="talk-kind">Poster</span>
+          <a class="talk-title" href="assets/files/poster-qmbc-2026.pdf">Kinetic Energy Driven Ferromagnetic Insulator</a>
+          <p class="talk-venue">14th Workshop on Quantum Many-Body Computation
+          <span class="muted" lang="zh">· 第十四届量子多体计算研讨会</span></p>
+        </div>
+        <time class="talk-date" datetime="2026-04">Apr 2026</time>
+      </li>
+      <li>
+        <div class="talk-main">
+          <span class="talk-kind">Talk</span>
+          <span class="talk-title">Kinetic Energy Driven Ferromagnetic Insulator</span>
+          <p class="talk-venue"><em>Lundao</em> Five-University Doctoral Forum, in English
+          <span class="muted" lang="zh">· "论道"五校联合博士生学术论坛，英文报告</span></p>
+        </div>
+        <time class="talk-date" datetime="2024-12">Dec 2024</time>
+      </li>
+    </ul>
+
+    <p class="footnote">
+      Slides and posters open as PDF. The December 2024 talk has no file on hand.
+      <span lang="zh">幻灯片与海报可直接打开 PDF；2024 年 12 月的报告目前没有留存文件。</span>
+    </p>
+  </section>
+
+  <!-- ============================== NEWS ============================== -->
+  <section class="wrap section" id="news">
+    <div class="section-head">
+      <h2>News</h2>
+      <p class="section-sub" lang="zh">动态</p>
+    </div>
+
+    <ol class="timeline">
+      <li>
+        <time datetime="2026-10">Oct 2026</time>
+        <p>Talk on the kinetic ferromagnetic insulator at the 3rd Doctoral Forum, Eastern
+        Institute of Technology, Ningbo. <span class="muted" lang="zh">在第三届宁波东方理工大学
+        博士生论坛报告这项工作。</span></p>
+      </li>
+      <li>
+        <time datetime="2026-08">Aug 2026</time>
+        <p>Named one of ten province-wide Outstanding Individuals in Zhejiang's graduate
+        "Three Assistantships, One Tutor" programme.
+        <span class="muted" lang="zh">获评浙江省研究生"三助一辅之星"优秀个人典型（全省 10 人）。</span></p>
+      </li>
+      <li>
+        <time datetime="2026-06">Jun 2026</time>
+        <p>Our dragon-boat team took first place at the 6th Hangzhou Dragon-Boat
+        Championship.
+        <span class="muted" lang="zh">龙舟队在 2026 年第六届杭州市全民龙舟争霸赛获得团体第一名。</span></p>
+      </li>
+      <li>
+        <time datetime="2026-05">May 2026</time>
+        <p>Oral report at the 20th National Conference on Magnetism Theory, Hangzhou.
+        <span class="muted" lang="zh">在第 20 届全国磁学理论会议作口头报告。</span></p>
+      </li>
+      <li>
+        <time datetime="2026">2026</time>
+        <p><em>Kinetic Energy Driven Ferromagnetic Insulator</em> published in
+        <em>Physical Review Letters</em> <strong>136</strong>, 086504, open access.
+        <span class="muted" lang="zh">论文以开放获取形式发表在 PRL。</span></p>
+      </li>
+      <li>
+        <time datetime="2026">2026</time>
+        <p>Awarded the Suwu Scholarship and the Most Inspiring Leadership Award at Westlake
+        University, and named an Outstanding Graduate Student.
+        <span class="muted" lang="zh">获西湖大学苏武奖学金、最具领导力奖与优秀研究生。</span></p>
+      </li>
+      <li>
+        <time datetime="2025-06">Jun 2025</time>
+        <p>The water-sports club placed 3rd of 34 student organisations and received the
+        "Vital Club" award, at the end of my first year as president.
+        <span class="muted" lang="zh">水上运动社在 34 个社团中排名第 3，获"活力社团"称号。</span></p>
+      </li>
+      <li>
+        <time datetime="2024-12">Dec 2024</time>
+        <p>English talk at the <em>Lundao</em> five-university doctoral forum.
+        <span class="muted" lang="zh">在"论道"五校联合博士生学术论坛作英文报告。</span></p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============================== TEACHING ============================== -->
+  <section class="wrap section" id="teaching">
+    <div class="section-head">
+      <h2>Teaching</h2>
+      <p class="section-sub" lang="zh">教学</p>
+    </div>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Teaching Assistant, Physics</h3>
+        <p class="entry-org">Westlake University <span class="sep">·</span> Sep 2023 – Jan 2026</p>
+      </div>
+      <p class="entry-summary">
+        Course support from problem sets to final grades, with a standing office hour and
+        individual follow-up.
+      </p>
+      <p class="entry-summary zh" lang="zh">
+        从习题到期末成绩的完整课程支持，固定答疑时间，并持续跟进个人问题。
+      </p>
+      <ul class="entry-list">
+        <li>
+          <span class="en">Teaching assistant for <em>General Physics I</em> (Fall 2023),
+          <em>Advanced Quantum Mechanics</em> (Fall 2024, graduate level), and
+          <em>Quantum Mechanics</em> (Fall 2025).</span>
+          <span class="zh" lang="zh">担任 <em>General Physics I</em>（2023 秋）、
+          <em>Advanced Quantum Mechanics</em>（2024 秋，研究生课程）与
+          <em>Quantum Mechanics</em>（2025 秋）课程助教。</span>
+        </li>
+        <li>
+          <span class="en">Wrote the weekly problem sets and grading rubrics myself before
+          marking, so that a partial answer could earn credit for the right reason; built a
+          course website for notes and assignments and set up the class communication channel
+          in the first week.</span>
+          <span class="zh" lang="zh">批改前先独立完成每周习题并制定评分标准，让部分正确的解答也能
+          按理由得分；搭建课程网站发布讲义与作业，并在第一周建立课程沟通渠道。</span>
+        </li>
+        <li>
+          <span class="en">Reviewed mid-term and final papers for difficulty, precision of
+          wording and ambiguity before they went to print, and fed corrections back to the
+          instructor.</span>
+          <span class="zh" lang="zh">在试卷付印前审核难度、表述准确性与歧义，并向任课教师反馈
+          修改意见。</span>
+        </li>
+        <li>
+          <span class="en">The handwritten solution sets I prepared over three semesters
+          stacked to roughly the thickness of a textbook.</span>
+          <span class="zh" lang="zh">三个学期累积的手写习题课讲义，摞起来约有一本教科书厚。</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Training the next cohort of teaching assistants</h3>
+        <p class="entry-org">Invited by the Undergraduate College <span class="sep">·</span>
+        Autumn 2026</p>
+      </div>
+      <p class="entry-summary">
+        Wrote and delivered an English training session for students taking on TA roles in
+        undergraduate courses the following term.
+      </p>
+      <p class="entry-summary zh" lang="zh">
+        受本科生书院邀请，为下学期担任本科生课程助教的同学撰写并讲授了一节英文培训课。
+      </p>
+      <ul class="entry-list">
+        <li>
+          <span class="en">Structured the session around what a semester actually demands:
+          clarifying duties before term, building a communication channel every student can
+          reach, grading for reasoning rather than the final answer, and reviewing exam papers
+          before they are printed.</span>
+          <span class="zh" lang="zh">按一个学期的实际节奏组织内容：开课前确认职责、建立每个学生
+          都能收到通知的渠道、按推理而非最终答案给分、付印前审核试卷。</span>
+        </li>
+      </ul>
+      <p class="entry-links">
+        <a href="assets/files/ta-training-cohort-2026.pdf">Training deck (PDF, 350 KB) →</a>
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>One-to-one tutoring in mathematics and physics</h3>
+        <p class="entry-org">Independent <span class="sep">·</span> 2020 – 2023</p>
+      </div>
+      <p class="entry-summary">
+        Long-running tutoring in calculus, linear algebra and probability, adapted to each
+        student's starting point.
+      </p>
+      <p class="entry-summary zh" lang="zh">
+        长期辅导微积分、线性代数与概率论，按学生的实际基础调整讲解与练习。
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Science outreach</h3>
+        <p class="entry-org">Secondary schools <span class="sep">·</span> 2023 – 2024</p>
+      </div>
+      <ul class="entry-list">
+        <li>
+          <span class="en">Jul 2023 — Haishu Middle School, Ningbo:
+          <em>A Bird's-Eye View of Physics</em>.</span>
+          <span class="zh" lang="zh">2023 年 7 月，宁波海曙中学，主题"鸟瞰物理学"。</span>
+        </li>
+        <li>
+          <span class="en">Jul 2024 — three schools in Hefeng County, Enshi, Hubei:
+          <em>The Invisible Force</em>.</span>
+          <span class="zh" lang="zh">2024 年 7 月，湖北恩施鹤峰县三所学校，主题"看不见的力"。</span>
+        </li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ============================== SERVICE ============================== -->
+  <section class="wrap section" id="service">
+    <div class="section-head">
+      <h2>Leadership &amp; Service</h2>
+      <p class="section-sub" lang="zh">组织与社会实践</p>
+    </div>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>President, Westlake University Water Sports Club</h3>
+        <p class="entry-org">Sep 2024 – Jun 2026 <span class="sep">·</span>
+        vice-president from 2023</p>
+      </div>
+      <p class="entry-summary">
+        Two years running a club whose whole point is getting people with no experience onto
+        the water — paddling, kayaking, rowing, dragon boat, sailing.
+      </p>
+      <p class="entry-summary zh" lang="zh">
+        两年社长：最核心的一件事，是让完全没有经验的人也敢下水——桨板、皮划艇、赛艇、龙舟、帆船。
+      </p>
+      <ul class="entry-list">
+        <li>
+          <span class="en">Led the club to 3rd of 34 organisations and the university's
+          "Vital Club" award (活力社团) in 2025, at the end of the first year in charge.</span>
+          <span class="zh" lang="zh">2025 年在 34 个社团中排名第 3，获校级"活力社团"称号。</span>
+        </li>
+        <li>
+          <span class="en">Two years of dragon-boat work, starting with the university's
+          first dragon-boat team in 2024 as vice-president. In 2026 I led the training and
+          competition plan for the 6th Hangzhou Dragon-Boat Championship and competed as a
+          member — the team took first place.</span>
+          <span class="zh" lang="zh">连续两年负责龙舟项目：2024 年任副社长时组建学校首支龙舟队；
+          2026 年第六届杭州市全民龙舟争霸赛由我带队制定训练与参赛方案，并作为队员上场，团队获得
+          第一名。</span>
+        </li>
+        <li>
+          <span class="en">Competed in the X9 university rowing league and a 28 km rowing
+          marathon at Qiandao Lake, and helped with the logistics of both trips.</span>
+          <span class="zh" lang="zh">参加 X9 高校联盟赛艇联赛与千岛湖 28 公里赛艇马拉松，并协助
+          两次出行的组织协调。</span>
+        </li>
+        <li>
+          <span class="en">Co-planned the campus water-sports meeting with the undergraduate
+          college — held for the third time in 2026 — and ran the paddleboard session on the
+          campus ring canal as safety lead, teaching in small batches to keep the risk
+          bounded.</span>
+          <span class="zh" lang="zh">与本科生书院共同策划校园水上运动会（2026 年已办至第三届）；
+          担任校内环形水道桨板活动安全负责人，采用分批教学控制风险。</span>
+        </li>
+        <li>
+          <span class="en">Designed water-frisbee sessions with the frisbee club, turning a
+          one-off collaboration into a repeatable format.</span>
+          <span class="zh" lang="zh">与飞盘社共同设计水上飞盘活动，把一次性合作做成可重复的活动形式。</span>
+        </li>
+        <li>
+          <span class="en">Co-organised the first "Spring Power" rowing-machine competition
+          with on-site coaching, and a water-experience programme for visiting US high-school
+          students with the international office.</span>
+          <span class="zh" lang="zh">组织首届"春之力"划船器比赛并提供现场教学；与国际事务部合作，
+          为来访美国高中生安排桨板体验。</span>
+        </li>
+        <li>
+          <span class="en">Most of the work was not on the water: writing the event emails and
+          sign-up forms, arranging insurance and weather contingencies, writing the safety
+          plan, and settling the reimbursements afterwards.</span>
+          <span class="zh" lang="zh">大部分工作其实不在水上：写活动邮件与报名文案、安排保险与天气
+          预案、制定安全方案，以及事后的报销结算。</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Lab group leader</h3>
+        <p class="entry-org">Wu group <span class="sep">·</span> everyday coordination</p>
+      </div>
+      <p class="entry-summary">
+        Coordinating the group's day-to-day affairs alongside research.
+      </p>
+      <p class="entry-summary zh" lang="zh">在科研之外承担课题组的日常协调工作。</p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Baishanzu rural revitalisation fieldwork</h3>
+        <p class="entry-org">Interdisciplinary team member <span class="sep">·</span> Jul 2026</p>
+      </div>
+      <ul class="entry-list">
+        <li>
+          <span class="en">Four days of fieldwork with doctoral students from science,
+          medicine, life science and engineering across three sites, covering ecological
+          protection, rural livelihoods and tourism.</span>
+          <span class="zh" lang="zh">与理学、医学、生命科学及工学背景的博士生开展为期四天的调研，
+          覆盖三处点位的生态保护、乡村生计与文旅发展。</span>
+        </li>
+        <li>
+          <span class="en">Contributed to the team report on integrating resources across the
+          three sites and on low-disturbance operation models.</span>
+          <span class="zh" lang="zh">参与形成团队报告，讨论三地资源整合与低扰动运营模式。</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Volunteering &amp; peer support</h3>
+        <p class="entry-org">Westlake University <span class="sep">·</span> 2024 – 2026</p>
+      </div>
+      <ul class="entry-list">
+        <li>
+          <span class="en">"Worry-free Mailbox" listener at the student counselling centre;
+          admissions interviews and orientation support for the undergraduate innovation
+          programme.</span>
+          <span class="zh" lang="zh">心理中心"解忧信箱"志愿者；参与创新班招生复试与迎新等学生
+          服务工作。</span>
+        </li>
+        <li>
+          <span class="en">Shared literature-reading techniques with undergraduates
+          (Nov 2024) and joined the new-student Q&amp;A panel (Aug 2025).</span>
+          <span class="zh" lang="zh">应本科生邀请分享文献阅读技巧（2024 年 11 月），参加新生
+          入学答疑会（2025 年 8 月）。</span>
+        </li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ============================== HONORS ============================== -->
+  <section class="wrap section" id="honors">
+    <div class="section-head">
+      <h2>Honors &amp; Education</h2>
+      <p class="section-sub" lang="zh">荣誉与学历</p>
+    </div>
+
+    <ul class="awards">
+      <li>
+        <span class="award-year">2026</span>
+        <span class="award-body">
+          <strong>Outstanding Individual</strong>, Zhejiang Province graduate student
+          "Three Assistantships, One Tutor" programme, one of 10 province-wide
+          <span class="muted" lang="zh">（浙江省普通高校研究生"三助一辅之星"优秀个人典型，全省 10 人）</span>
+        </span>
+      </li>
+      <li>
+        <span class="award-year">2026</span>
+        <span class="award-body">
+          <strong>Suwu Scholarship</strong>, Westlake University, awarded to 3 students in the
+          department <span class="muted" lang="zh">（西湖大学苏武奖学金，物理系 3 人）</span>
+        </span>
+      </li>
+      <li>
+        <span class="award-year">2026</span>
+        <span class="award-body">
+          <strong>Outstanding Student Cadre</strong>, Fudan University
+          <span class="muted" lang="zh">（复旦大学优秀学生干部）</span>
+        </span>
+      </li>
+      <li>
+        <span class="award-year">2026</span>
+        <span class="award-body">
+          <strong>Outstanding Graduate Student</strong> and <strong>Most Inspiring Leadership
+          Award</strong>, Westlake University
+          <span class="muted" lang="zh">（西湖大学优秀研究生、最具领导力奖）</span>
+        </span>
+      </li>
+      <li>
+        <span class="award-year">2026</span>
+        <span class="award-body">
+          <strong>Team champion</strong>, 6th Hangzhou Dragon-Boat Championship
+          <span class="muted" lang="zh">（2026 年第六届杭州市全民龙舟争霸赛）</span> — led the
+          training and competition plan as team lead and competed as a member
+          <span class="muted" lang="zh">（带队组织并作为队员参赛）</span>
+        </span>
+      </li>
+      <li>
+        <span class="award-year">2019–2021</span>
+        <span class="award-body">
+          <strong>National Inspirational Scholarship</strong>, three consecutive years
+          <span class="muted" lang="zh">（国家励志奖学金，连续三年）</span>
+        </span>
+      </li>
+      <li>
+        <span class="award-year">2020</span>
+        <span class="award-body">
+          <strong>First place</strong>, men's division, 2nd Central China University League
+          Physical Fitness Competition
+          <span class="muted" lang="zh">（第二届华中地区高校联盟体能比赛男子组第一名）</span>
+        </span>
+      </li>
+      <li>
+        <span class="award-year">2019</span>
+        <span class="award-body">
+          <strong>Champion</strong>, 8th WHU–HUST dragon-boat regatta, as a member of the
+          Wuhan University team
+          <span class="muted" lang="zh">（第八届武汉大学—华中科技大学"同城双星"龙舟友谊赛冠军）</span>
+        </span>
+      </li>
+    </ul>
+
+    <h3 class="subhead">Education <span lang="zh">学历</span></h3>
+    <ul class="awards">
+      <li>
+        <span class="award-year">2022–2027</span>
+        <span class="award-body">
+          <strong>Ph.D. in Physics</strong>, Fudan University — joint programme with Westlake
+          University. Theoretical condensed-matter physics. GPA 3.78/4.
+          <span class="muted" lang="zh">（复旦大学物理学博士研究生，与西湖大学联合培养，GPA 3.78/4）</span>
+        </span>
+      </li>
+      <li>
+        <span class="award-year">2018–2022</span>
+        <span class="award-body">
+          <strong>B.Sc. in Physics</strong>, Wuhan University — ranked in the top 5% of the
+          cohort by combined record; GPA 3.9/4.
+          <span class="muted" lang="zh">（武汉大学物理学学士，推免综合成绩年级前 5%，GPA 3.9/4）</span>
+        </span>
+      </li>
+    </ul>
+
+    <h3 class="subhead">Toolkit <span lang="zh">工具与技能</span></h3>
+    <ul class="toolkit">
+      <li>
+        <strong>Physics</strong> — band theory and tight-binding models, Fermi surfaces,
+        Hubbard models, quantum many-body theory, DMRG / iMPS, finite-entanglement scaling,
+        variational Monte Carlo.
+        <span class="muted" lang="zh">能带与紧束缚模型、费米面、Hubbard 模型、量子多体理论、
+        DMRG / iMPS、有限纠缠标度、变分蒙特卡洛。</span>
+      </li>
+      <li>
+        <strong>Computing</strong> — Python (TeNPy), Julia, Mathematica, MATLAB, LaTeX,
+        Linux/HPC batch workflows.
+        <span class="muted" lang="zh">Python（TeNPy）、Julia、Mathematica、MATLAB、LaTeX、
+        Linux/HPC 批量计算。</span>
+      </li>
+      <li>
+        <strong>Languages</strong> — Mandarin (native), English (CET-6, 510; reading, writing
+        and presenting).
+        <span class="muted" lang="zh">中文（母语）、英语（CET-6 510，可读写与学术报告）。</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================== CONTACT ============================== -->
+  <section class="wrap section section-contact" id="contact">
+    <div class="section-head">
+      <h2>Contact</h2>
+      <p class="section-sub" lang="zh">联系</p>
+    </div>
+
+    <p class="prose-lead">
+      Happy to talk about strongly correlated systems, tensor-network methods, or anything
+      that needs a theorist who will also write and test the code.
+    </p>
+    <p class="prose-lead zh" lang="zh">
+      欢迎讨论强关联体系、张量网络方法，或者任何需要"能推导、也能写代码、并且愿意做测试"的人的事情。
+    </p>
+
+    <p class="contact-mail">
+      <a href="mailto:yejinyuan@westlake.edu.cn">yejinyuan@westlake.edu.cn</a>
+      <button class="copy-btn" type="button" data-copy="yejinyuan@westlake.edu.cn"
+              aria-label="Copy email address">Copy</button>
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>&copy; <span id="year">2026</span> Jinyuan Ye (叶锦缘).</p>
+    <p class="footer-meta">
+      Built as a static site, hosted on GitHub Pages.
+      <span class="sep">·</span> Last updated <time datetime="2026-11-07">7 Nov 2026</time>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

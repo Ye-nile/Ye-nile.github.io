@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>变分蒙特卡洛方法笔记 · Variational Monte Carlo · Jinyuan Ye</title>
+<meta name="description" content="Gutzwiller 变分波函数、Metropolis 抽样与 Sherman–Morrison 行列式更新的推导笔记。">
+
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });"></script>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    root.classList.add('js');
+    try {
+      var stored = localStorage.getItem('theme');
+      if (stored === 'light' || stored === 'dark') root.setAttribute('data-theme', stored);
+    } catch (e) {}
+  })();
+</script>
+
+<style>
+  .note-bar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px var(--gutter);
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    font-size: .84rem;
+  }
+  .note-bar a { color: var(--muted); }
+  .note-bar a:hover { color: var(--accent); text-decoration: none; }
+  .note-bar .tag {
+    margin-left: auto; font-size: .68rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  .note {
+    max-width: 780px;
+    margin-inline: auto;
+    padding: 46px var(--gutter) 90px;
+  }
+  .note h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); letter-spacing: -0.01em; }
+  .note .sub {
+    margin: 8px 0 0; font-size: .86rem; color: var(--muted);
+    letter-spacing: .04em;
+  }
+  .note .lead {
+    margin: 24px 0 0; padding: 16px 18px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0;
+    font-size: .92rem; color: var(--ink-soft); line-height: 1.8;
+  }
+  .note h2 {
+    font-size: 1.18rem; margin: 46px 0 14px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  .note h2 .en {
+    display: block; margin-top: 4px;
+    font-family: var(--font-sans); font-size: .72rem; font-weight: 400;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+  .note p { color: var(--ink-soft); font-size: .95rem; line-height: 1.85; }
+  .note ul, .note ol { margin: 0 0 1.1em; padding-left: 1.35em; }
+  .note ul { list-style: disc; }
+  .note ol { list-style: decimal; }
+  .note li { color: var(--ink-soft); font-size: .95rem; line-height: 1.8; margin-bottom: .45em; }
+  .note li::marker { color: var(--line-strong); }
+  .note code {
+    font-family: var(--font-mono); font-size: .88em;
+    background: var(--surface-alt); border: 1px solid var(--line);
+    border-radius: 5px; padding: .08em .35em;
+  }
+  .note .katex-display {
+    margin: 1.1em 0;
+    padding: 14px 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .note .katex { font-size: 1.02em; }
+  .note .asidenote {
+    font-size: .84rem; color: var(--muted);
+    border-left: 2px solid var(--line-strong); padding-left: 12px; margin: 1.1em 0;
+  }
+  .note footer {
+    margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: .8rem; color: var(--muted);
+  }
+  @media (max-width: 560px) {
+    .note { padding-top: 32px; }
+    .note .katex-display { padding: 10px 6px; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="note-bar">
+  <a href="../index.html">← 叶锦缘 Jinyuan Ye</a>
+  <span class="tag">Method note · 2026</span>
+</div>
+
+<main class="note">
+
+  <h1>变分蒙特卡洛方法</h1>
+  <p class="sub">Variational Monte Carlo with a Gutzwiller wave function</p>
+
+  <p class="lead">
+    这是我在推导 Gutzwiller 变分蒙特卡洛方案时写下的笔记，目标量是单电子激发能。
+    内容包括波函数形式、Monte Carlo 抽样的实现步骤、行列为更新的技巧（Sherman–Morrison 公式），
+    以及误差估计的口径。公式按原始 LaTeX 手稿转录。
+  </p>
+
+  <h2>1. 总体思路 <span class="en">Formulation</span></h2>
+
+  <p>从任意哈密顿量出发，以 Hubbard 模型为例：</p>
+
+  $$
+  H = H_t + U = -t \sum_{\langle ij\rangle,\sigma}\left(c_{i\sigma}^{\dagger} c_{j\sigma} + \mathrm{h.c.}\right) + U \sum_i n_{i\uparrow} n_{i\downarrow}
+  $$
+
+  <p>取 Gutzwiller 变分波函数</p>
+
+  $$
+  |G\rangle = g^{\sum_i n_{i\uparrow} n_{i\downarrow}} |FS\rangle
+  $$
+
+  <p>
+    其中 $g \in [0,1]$ 是 Gutzwiller 因子，为待定的变分参数；$|FS\rangle$ 是所关心体系在动量空间的基态。
+    对 Hubbard 模型，取为自由费米海：
+  </p>
+
+  $$
+  |FS\rangle = \prod_{\varepsilon_{\vec k} < \mu_c} c_{\vec k\sigma}^{\dagger} |0\rangle
+  $$
+
+  <p>
+    $\varepsilon_{\vec k}$ 是晶格的自由能带结构（例如四方晶格单带模型中
+    $\varepsilon_{\vec k} = -2t(\cos k_x + \cos k_y)$），$\mu_c$ 由粒子数条件确定。
+    超导问题中基态则取为
+    $\hat{P}_{N_e}\prod_{\vec k}(u_{\vec k} + v_{\vec k} c_{\vec k\uparrow}^{\dagger} c_{-\vec k\downarrow}^{\dagger})|0\rangle$。
+  </p>
+
+  <p>确定 $\mu_c$ 的步骤：</p>
+  <ol>
+    <li>确定粒子数 $N$；</li>
+    <li>把 $\mu_c$ 从大到小调节，使费米面下的粒子数在不小于 $N$ 的前提下取到最小值，记为 $\bar N$；</li>
+    <li>取出满足 $\varepsilon_{\vec k} \le \mu_c$ 的所有 $\vec k$，把粒子数调为 $\bar N$，对应的费米能即为该步的 $\mu_c$。</li>
+  </ol>
+
+  <p class="asidenote">
+    这一步要求能带不出现平带、或态密度无穷大且不孤立的连续区域，否则调节 $\mu_c$ 时 $N$ 会跳变。
+    实际计算的是平均到每个粒子的能量，跳变未必有影响，但需要在代码里显式处理。
+  </p>
+
+  <p>
+    Gutzwiller 因子刻画双占据：$g = 0$ 对应 $U \to \infty$，体系无任何双占据，可由 t–J 模型描述；
+    $g = 1$ 对应 $U = 0$（无相互作用）。具体取值为使能量最小的那一个，
+    其余物理量同样视为 $g$ 的函数，在能量极小处求值。
+  </p>
+
+  <p>确定波函数后，能量由下式给出：</p>
+
+  $$
+  \begin{aligned}
+  E(g) &= \frac{\langle G|H|G\rangle}{\langle G|G\rangle}
+       = \frac{\sum_{ab}\langle G|a\rangle H_{ab}\langle b|G\rangle}{\sum_a |\langle a|G\rangle|^2} \\
+       &= \sum_a P_a \,\frac{\sum_b H_{ab}\langle b|G\rangle}{\langle a|G\rangle}
+  \end{aligned}
+  $$
+
+  <p>
+    其中 $P_a = |\langle a|G\rangle|^2 / \sum_{a'} |\langle a'|G\rangle|^2$ 为归一化的正定因子，
+    可视为“概率”；后一项可视为局域“能量”。$|a\rangle, |b\rangle$ 为任意电子构型（完备基）。
+    对一般算符：
+  </p>
+
+  $$
+  \langle O\rangle = \sum_a P_a \,\frac{\sum_b \langle a|O|b\rangle\langle b|G\rangle}{\langle a|G\rangle}
+  $$
+
+  <p>在 Monte Carlo 中，概率部分由随机数代替，局域能量分成两部分计算：</p>
+
+  $$
+  H_{ab} = \langle a|H|b\rangle = \langle a|H_t|b\rangle + U\sum_i n_{i\uparrow}^{(a)} n_{i\downarrow}^{(a)} \delta_{ab}
+  $$
+
+  <p>第一项只能取 $0, \pm t$。取 $S_z = 0$ 的构型</p>
+
+  $$
+  |a\rangle = \left(\prod_{i=1}^{N/2} c_{R_i\uparrow}^{\dagger}\right)\left(\prod_{j=1}^{N/2} c_{r_j\downarrow}^{\dagger}\right)|0\rangle
+  $$
+
+  <p>其中 $R_i$、$r_j$ 分别为自旋上、下电子所在位置，$N$ 为总电子数。于是重叠为一个行列式：</p>
+
+  $$
+  \langle a|G\rangle = g^{\sum_i n_{i\uparrow} n_{i\downarrow}} \det(A_\uparrow)\det(A_\downarrow)
+  $$
+
+  $$
+  (A_\uparrow)_{ij} = e^{i\vec k_j \cdot \vec R_i}, \qquad (A_\downarrow)_{ij} = e^{i\vec k_j \cdot \vec r_i}
+  $$
+
+  <p>其中 $\vec k_j$ 是由 $\varepsilon_{\vec k} \le \mu_c$ 在布里渊区中选出的动量。</p>
+
+  <h2>2. 计算步骤 <span class="en">Sampling procedure</span></h2>
+
+  <ol>
+    <li>随机生成一个初始构型 $|a\rangle$。</li>
+    <li>
+      以概率
+      $$
+      P_{a \to b} = \frac{|\langle b|G\rangle|^2 / N_b}{|\langle a|G\rangle|^2 / N_a}
+      $$
+      进行更新，其中 $N_a$（$N_b$）为构型 $|a\rangle$（$|b\rangle$）可能的跃迁方式总数。
+      实际实现中即：若 $P_{a\to b} \ge 1$ 直接接受；否则与 $[0,1]$ 上的均匀随机数 $u$ 比较，大于 $u$ 则接受。
+    </li>
+    <li>
+      热化：重复上一步，记录每 1000 步内接受更新的次数 $N_{\text{update}}^i$；
+      当它趋于稳定值时视为热化结束，该值即为平均接受概率 $\bar P_{a\to b}$。
+      这一步可能需要几万到几十万步，热化本身不影响最终结果，只影响收敛快慢。
+    </li>
+    <li>
+      热化结束后继续重复更新，约
+      $\left[N / \bar P_{a\to b}\right]$
+      次（相当于所有电子近似各 hop 一次）后抽样计算局域能量；$|b\rangle$ 取遍由 $|a\rangle$ 出发可能得到的所有构型，包括 $|a\rangle$ 自身。
+      最终取各次抽样局域能量的算术平均值作为能量，其他物理量同理。
+      本质上即 $\bar O = \sum_i p(x_i) O(x_i)$，只是 $p(x)$ 由 Monte Carlo 给出。
+    </li>
+  </ol>
+
+  <h2>3. 计算技巧：Sherman–Morrison 更新 <span class="en">Rank-one updates</span></h2>
+
+  <p>
+    计算 $\langle a|G\rangle$ 需要行列式，但每次更新只移动一个电子，更新前后的矩阵只有一行不同，
+    因此不必重新求全部矩阵元。设跃迁前后的矩阵为 $A, \tilde A$，其逆为 $X, \tilde X$。
+    记 $A$ 的行向量为 $\vec a_{r_i}^{T}$，$X$ 的列向量为 $\vec x_j$，则由 $AX = I$ 有
+    $\vec a_{r_i}\cdot \vec x_j = \delta_{ij}$。
+  </p>
+
+  <p>若第 $i$ 个电子从 $r_i$ 跳到 $\tilde r_i$，行列式之比为</p>
+
+  $$
+  \frac{\langle \tilde a|G\rangle}{\langle a|G\rangle}
+  = g^{\delta N}\,\frac{\det(\tilde A)}{\det(A)}
+  = g^{\delta N}\,(-1)^{r_i - \tilde r_i}\,\tilde a_{\tilde r_i}\, x_i
+  $$
+
+  <p>
+    其中 $(-1)^{r_i-\tilde r_i}$ 是把 $\tilde r_i$ 所在行移回 $r_i$ 位置时的符号，
+    $r_i - \tilde r_i$ 为跳跃时需要交换的<strong>同自旋</strong>电子数；
+    $\delta N$ 为更新前后双占据数之差。
+  </p>
+
+  <p>更新被接受时，逆矩阵按秩一更新改写。设被替换的第 $I$ 行与原逆矩阵的内积为 $M_i = a_I \cdot x_i$，则</p>
+
+  $$
+  \tilde x_I = \frac{x_I}{M_I}, \qquad
+  \tilde x_{i \neq I} = x_i - x_I \frac{M_i}{M_I}
+  $$
+
+  <p>
+    可以直接验证更新后仍满足 $\tilde a_i \tilde x_j = \delta_{ij}$。
+    这样每次更新的代价从 $O(N^3)$ 降到 $O(N^2)$。
+  </p>
+
+  <p class="asidenote">
+    正确性检验：令 $g = 1$（无相互作用），总能量应严格等于动能项——这是代码最直接的对照。
+  </p>
+
+  <h2>4. 误差估计 <span class="en">Standard error</span></h2>
+
+  <p>
+    标准差描述总体中单个数据偏离均值的程度；标准误描述容量为 $n$ 的样本均值 $\bar X$
+    与总体均值 $\mu_0$ 之间的偏离。样本均值的标准误与总体标准差满足
+  </p>
+
+  $$
+  \sigma_{\bar X} = \frac{\sigma}{\sqrt n}
+  $$
+
+  <p>
+    当 $n \to \infty$ 时 $\sigma_{\bar X} \to 0$。通常不知道总体标准差，于是用样本标准差 $S$ 代替：
+  </p>
+
+  $$
+  \sigma_{\bar X} \approx \frac{S}{\sqrt n}, \qquad \mu_0 = \bar X \pm \sigma_{\bar X}
+  $$
+
+  <p>
+    因此在报告中给出的能量误差应当是标准误，而不是标准差；对 Markov 链样本，
+    还要考虑自关联时间，否则误差会被低估。
+  </p>
+
+  <footer>
+    个人学习笔记，不构成正式发表内容。原始推导以 LaTeX 撰写，此处按原稿转录排版；
+    如有错误，欢迎来信指出。
+    <a href="../index.html#research">← 返回主页</a>
+  </footer>
+
+</main>
+
+</body>
+</html>
